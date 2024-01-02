@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ServiceMonitor
+metadata:
+  name: api-service-monitor
+  labels:
+    release: prometheus
+    app: prometheus
+spec:
+  jobLabel: job
+  endpoint:
+    - interval: 30s
+      port: sqlport
+      path: /metrics
+  selector:
+    matchLabels:
+      app: 
